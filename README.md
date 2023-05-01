@@ -1,3 +1,3 @@
 # Django-miniproject-11th
 
-read.me 파일 열심히 작성해주세요!
+요일별로 사진 게시물을 올릴 수 있는 게시판
