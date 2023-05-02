@@ -54,4 +54,4 @@ def update(request, blog_id):
     blog_update.save()
     return redirect('home')
 
-    # r깃 테스트용!!!!
+    # r깃 테스트용!!!!!!!!!!!!!!!!!!!!!!
