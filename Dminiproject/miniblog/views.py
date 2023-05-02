@@ -42,3 +42,5 @@ def update(request,main_id):
     main_update.content=request.POST['content']
     main_update.save()
     return redirect('main')
+
+#우에헤헤
