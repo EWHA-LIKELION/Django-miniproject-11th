@@ -5,6 +5,7 @@ from .forms import Mainform
 
 # Create your views here.
 #WNTJRDLAL
+#dsfd
 
 def main(request):
     main_list=Main.objects.order_by('-uploaddate')    #작성일시 역순으로 정렬
