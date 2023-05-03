@@ -12,12 +12,12 @@
     
     <h1>Updating Post</h1>
 
-    <form action="{% url 'update2' upup.id %}" method="post">
+    <form action="{% url 'update2' kk.id %}" method="post">
 
         {% csrf_token %}
-        <p>제목: <input type="text" name="title" value="{{upup.title}}"> </p>
-        <p>작성자: <input type="text" name="username" value="{{upup.username}}"> </p>
-        본문 : <textarea name="content" cols="30" rows="10" > {{upup.content}} </textarea> 
+        <p>제목: <input type="text" name="title" value="{{kk.title}}"> </p>
+        <p>작성자: <input type="text" name="username" value="{{kk.username}}"> </p>
+        본문 : <textarea name="content" cols="30" rows="10" > {{kk.content}} </textarea> 
         <button type="submit">update!</button>
         
     </form>

@@ -26,6 +26,6 @@ urlpatterns = [
     path('main/new/',miniblog.views.new,name='new'),
     path('main/create/',miniblog.views.create,name='create'),
     path('main/delete/<int:main_id>',miniblog.views.delete,name='delete'),
-    path('main/update_page/<int:main_id>',miniblog.views.update_page,name='udpate_page'),
+    path('main/update_page/<int:main_id>',miniblog.views.update_page,name='update_page'),
     path('main/update/<int:main_id>', miniblog.views.update,name='update2'),
 ]
