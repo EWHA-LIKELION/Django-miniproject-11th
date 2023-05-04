@@ -15,7 +15,10 @@
     <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
-        {{form.as_p}}
+        {{form.title}}
+        {{form.author}}
+        {{form.body}}
+        
         <button type="submit">제출</button>
 
     </form>

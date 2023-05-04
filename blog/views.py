@@ -53,5 +53,3 @@ def update(request, blog_id):
     blog_update.body = request.POST['body']
     blog_update.save()
     return redirect('home')
-
-    # r깃 테스트용!!!!!!!!!!!!!!!!!!!!!!
