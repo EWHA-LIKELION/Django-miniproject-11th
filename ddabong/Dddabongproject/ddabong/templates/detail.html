@@ -1,0 +1,9 @@
+<h3>{{ddabong.title}}</h3>
+{{ddabong.date}}
+<br>
+{{ddabong.body}}
+<br>
+
+
+<a href="{% url 'home' %}">홈으로 돌아가기</a>
+<a href="{% url 'delete' ddabong.id %}">삭제하기</a>
