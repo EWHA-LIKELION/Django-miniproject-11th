@@ -21,10 +21,6 @@ def new(request):
 # Create your views here.
 
 
-def new(request):
-    return render(request, 'new.html')
-
-
 def create(request):
     form = Blogform(request.POST, request.FILES)
     if form.is_valid():
