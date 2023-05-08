@@ -1,0 +1,17 @@
+<body style="padding:5px">
+
+<h1>따봉도치야 고마워 🦔</h1>
+<a href="{% url 'new' %}">따봉을 날려주세요</a>
+
+{% for ddabong in ddabongs.all %}
+<div style="margin:10px; padding:5px; border:1px solid; border-color: gray; 
+border-radius: 10px; background-color: #f9b1d1; ">
+<h3>{{ddabong.title}}</h3>
+{{ddabong.date}}
+<br>
+{{ddabong.summary}}
+<a href="{% url 'detail' ddabong.id%}">...더보기</a>
+</div>
+
+{% endfor %}
+</body>
