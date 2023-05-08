@@ -1,0 +1,22 @@
+<body style="padding:5px">
+
+<h1>ReaDiary</h1>
+<a href="{% url 'new' %}">+add book!</a>
+
+{% for blog in blogs.all %}
+
+<div style="margin:10px; padding:5px; border:1px solid; border-color: coral;
+border-radius:10px; background-color:darkseagreen; ">
+<h3>{{blog.title}}</h3>
+{{blog.author}}
+<br>
+{{blog.date}}
+<br>
+{{blog.summary}}
+<a href="{% url 'detail' blog.id%}">...more</a>
+<br>
+</div>
+
+{% endfor %}
+</body>
+
