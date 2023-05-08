@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+<body style="padding:50px; background-color:black; padding-left:150px;padding-right:150px"></body>
+
+<div style="margin:10px; margin-bottom:15px;">
+<h2 style="color:rgb(255, 255, 255); display:inline; font-family: 'Pretendard';">[{{blog.type}}]</h2>
+<h2 style="color:rgb(255, 255, 255); display:inline; font-family: 'Pretendard';">{{blog.title}}</h2>
+</div>
+
+<div style="color:rgb(134, 134, 134); display:inline; font-family: 'Pretendard'; margin:10px;">
+    {{blog.date}}
+</div>
+<button type="button" onClick="location.href='{% url 'delete' blog.id%}'" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; font-weight: 600; float:right; margin:5px">삭제하기</button>
+<button type="button" onClick="location.href='{% url 'update_page' blog.id%}'" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; font-weight: 600; float:right; margin:5px">수정하기</button>
+<br>
+<hr style="border-color: white; margin:10px; margin-top:20px; margin-bottom:20px;">
+<div style="color:rgb(255, 255, 255); font-family: 'Pretendard'; margin:15px;">
+    {{blog.body}}
+</div>
+
+<hr style="border-color: white; margin:10px; margin-top:20px; margin-bottom:20px;">
+
+<button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; font-weight: 600; float:left; margin:5px; margin-left:10px">홈으로 돌아가기</button>
+<!--<a href="{% url 'delete' blog.id%}" style="color:rgb(229,9,20); margin:10px; font-family: 'Pretendard';">삭제하기</a>
+<a href="{% url 'update_page' blog.id%}" style="color:rgb(229,9,20); margin:10px; font-family: 'Pretendard';">수정하기</a>-->
