@@ -1,0 +1,18 @@
+<h3>{{kk.title}}</h3>
+{{kk.uploaddate}}
+<br>
+{{kk.content}}
+
+<a href="{% url 'delete' kk.id %}">delete</a>
+<a href="{% url 'update_page' kk.id %}">update</a>
+
+<!--이 부분을 계속 수정한 결과 나왔음..왜일까..-->
+<!--
+    <h1>{{main.title}}</h1>
+
+    <div>
+        {{main.content}}
+    </div>
+    
+    했을 때는 결과 안나왔어..
+-->
