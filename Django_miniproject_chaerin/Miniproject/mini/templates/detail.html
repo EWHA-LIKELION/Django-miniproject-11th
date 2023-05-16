@@ -5,6 +5,27 @@
 {{post.category}}
 <img src="{{post.image.url}}" style="height: 400;">
 
+<div>
+    {% for hashtag in hashtags.all %}
+    #{{hashtag}}
+    {%endfor%}
+</div>
+
+
 <a href="{% url 'home' %}">홈</a>
 <a href="{% url 'delete' post.id %}">삭제하기</a>
 <a href="{% url 'update_page' post.id %}">수정하기</a> 
+<hr>
+<a class="add_comment" href="{% url 'add_comment' post.id %}">댓글달기</a>
+
+{% for comment in post.comments.all %}
+    <br>
+    <div class="comment">
+        <strong class="username">{{comment.username}}</strong>
+        <div class="date">{{comment.created_at}}</div>
+            <p>{{comment.comment_text|linebreaks}}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>아직 댓글이 없어요 :( </p>
+{% endfor %}

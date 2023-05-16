@@ -10,13 +10,13 @@
 </head>
 <body>
     
-    <h1>Updating Blog</h1>
+    <h1>Updating Post</h1>
 
-    <form action="{% url 'update' blog.id %}" method="post">
+    <form action="{% url 'update' post.id %}" method="post">
 
         {% csrf_token %}
-        <p>제목: <input type="text" name="title" value="{{blog.title}}"> </p>
-        본문 : <textarea name="body" cols="30" rows="10" > {{blog.body}} </textarea> 
+        <p>제목: <input type="text" name="title" value="{{post.title}}"> </p>
+        본문 : <textarea name="body" cols="30" rows="10" > {{post.body}} </textarea> 
         <p>요일 : <input type="text" name="category"></p>
         <input name="image" type="file">
         <button type="submit">수정하기</button>
