@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Update Post</title>
+    <title>Update Comment</title>
     
 </head>
 <body>
@@ -20,20 +20,14 @@
     <form action="{% url 'update2' blog.id %}" method="post" style="color:white;font-family: 'Pretendard'; ">
 
         {% csrf_token %}
-        <p>공연명:</p>
-        <input type="text" name="type" value="{{blog.type}}" style="width:400px; height:20px"></p>
-        <p>제목:</p>
-        <input type="text" name="title" value="{{blog.title}}" style="width:400px; height:20px"> </p>
+        
+        <p>닉네임:</p>
+        <input type="text" name="type" value="{{comment.username}}" style="width:400px; height:20px"></p>
                
-        <p>본문 :</p>
+        <p>내용 :</p>
         <div style="margin-bottom:17px">
-        <textarea name="body" cols="54" rows="10"> {{blog.body}} </textarea>
+        <textarea name="comment_text" cols="54" rows="10"> {{comment.comment_text}} </textarea>
         </div>
-
-        <!--
-        <p>해시태그 :</p>
-        <input type="text" name="hashtags" value="{{blog.hashtag}}" style="width:400px; height:20px"> </p>
-        -->
 
         <hr style="border-color: white;">
         <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600;">등록</button>

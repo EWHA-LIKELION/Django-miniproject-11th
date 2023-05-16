@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+<body style="padding:50px; background-color:black; padding-left:150px;padding-right:150px">
+
+
+{% block content %}
+<h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center">New Comment</h1>
+<hr style="border-color: white;">
+<form method="POST" class="post-form" style="color:white;font-family: 'Pretendard'; ">
+    {% csrf_token %}
+    <p>닉네임:</p>
+    <input type="text" name="username" placeholder="닉네임을 입력하세요" style="width:400px; height:25px"></p>
+    <p>내용 :</p>
+    <div style="margin-bottom:17px">
+    <textarea name="comment_text" cols="54" rows="10" placeholder="내용을 입력하세요"; font-family: inherit;></textarea>
+    </div>
+    <hr style="border-color: white;">
+    <button type="submit" class="save btn btn-default" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600;">등록</button>
+</form>
+{% endblock %}
