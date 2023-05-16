@@ -17,7 +17,7 @@
 <a href="{% url 'update_page' post.id %}">수정하기</a> 
 <hr>
 <a class="add_comment" href="{% url 'add_comment' post.id %}">댓글달기</a>
-
+<hr>
 {% for comment in post.comments.all %}
     <br>
     <div class="comment">
