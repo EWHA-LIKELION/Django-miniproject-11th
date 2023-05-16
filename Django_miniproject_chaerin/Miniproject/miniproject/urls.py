@@ -31,4 +31,6 @@ urlpatterns = [
     path('update_page/<int:post_id>',mini.views.update_page,name="update_page"),
     path('update/<int:post_id>',mini.views.update,name="update"),
     path('<int:post_id>/comment',mini.views.add_comment,name="add_comment"),
+    path('update_comment_page/<int:comment_id>',mini.views.update_comment_page,name="update_comment_page"),
+    path('update_comment/<int:post_id>/<int:comment_id>',mini.views.update_comment,name="update_comment"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) #이미지 추가를 위해

@@ -94,3 +94,20 @@ def add_comment(request,post_id):
         form = Commentform()
 
     return render(request,'add_comment.html',{'form':form})
+
+
+def update_comment_page(request,comment_id):
+    comment_update=get_object_or_404(Comment,pk=comment_id)
+    post_ID=comment_update.post
+    return render(request,'update_comment.html',{'post':post_ID,'comment':comment_update})
+
+def update_comment(request,post_id,comment_id): #수정
+    print(request)
+    comment_update=get_object_or_404(Comment,pk=comment_id)
+    comment_update.username=request.POST['username']
+    comment_update.comment_text=request.POST['comment_text']
+    comment_update.created_at=timezone.now()
+    comment_update.post=get_object_or_404(Posting,pk=post_id)
+    #post_update.image = request.FILES['image']
+    comment_update.save()
+    return redirect('detail',post_id)

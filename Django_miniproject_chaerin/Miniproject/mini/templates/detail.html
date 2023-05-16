@@ -24,7 +24,7 @@
         <strong class="username">{{comment.username}}</strong>
         <div class="date">{{comment.created_at}}</div>
             <p>{{comment.comment_text|linebreaks}}</p>
-    </div>
+        <a class="update_comment_page" href="{% url 'update_comment_page' comment.id %}">댓글수정</a>
     <hr>
 {% empty %}
     <p>아직 댓글이 없어요 :( </p>
