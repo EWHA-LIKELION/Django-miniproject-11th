@@ -111,3 +111,8 @@ def update_comment(request,post_id,comment_id): #수정
     #post_update.image = request.FILES['image']
     comment_update.save()
     return redirect('detail',post_id)
+
+def delete_comment(request,post_id, comment_id):
+    comment_delete=get_object_or_404(Comment,pk=comment_id)
+    comment_delete.delete()
+    return redirect('detail',post_id)
