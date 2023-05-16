@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Ddabong
+from .models import *
 
 # Register your models here.
 
 admin.site.register(Ddabong)
+admin.site.register(Comment)
+admin.site.register(HashTag)
