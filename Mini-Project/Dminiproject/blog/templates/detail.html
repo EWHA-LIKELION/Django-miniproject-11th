@@ -17,6 +17,33 @@
     {{blog.body}}
 </div>
 
+<div style="color:white; font-family:'Pretendard'; margin:15px;">
+    {% for hashtag in hashtags.all %}
+    <p style="color:rgb(229,9,20); display:inline">#</p>
+    {{hashtag}}
+    {% endfor %}
+</div>
+
+<hr style="border-color: white; margin:10px; margin-top:20px; margin-bottom:10px;">
+<!--
+<p style="color:rgb(229,9,20); margin:10px; font-family: 'Pretendard'; font-weight: 700;">댓글</p>
+-->
+<h2 style="color:rgb(229,9,20); margin:15px; display:inline;">Comment</h2>
+<div style="float:right">
+<a class="add_comment" href="{% url 'add_comment' blog.id %}" style="margin:15px; display:inline ; font-family:'Pretendard'; color:rgb(134, 134, 134);">댓글 달기</a>
+</div>
+<br>
+{% for comment in blog.comments.all %}
+<div class="comment" style="color:white; margin:15px; font-family: 'Pretendard';">
+    <strong class="username"><{{comment.username}}></strong>
+    <div class="date" style="color:rgb(134,134,134)">{{comment.created_at}}</div>
+    <P>{{comment.comment_text|linebreaks}}</P>
+    <a class="add_comment" href="{% url 'comment_detail' comment.id %}" style="font-family:'Pretendard'; color:rgb(134, 134, 134);">댓글 수정</a>
+</div>
+{% empty %}
+<p style="color:white; font-family:'Pretendard'; margin:15px">아직 댓글이 없어요:(</p>
+{% endfor %}
+
 <hr style="border-color: white; margin:10px; margin-top:20px; margin-bottom:20px;">
 
 <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; font-weight: 600; float:left; margin:5px; margin-left:10px">홈으로 돌아가기</button>
