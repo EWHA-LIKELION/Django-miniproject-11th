@@ -21,9 +21,12 @@ read.me 파일 열심히 작성해주세요!
 
 ## 3. Reference
 https://www.nextree.co.kr/p8428/
-html의 form을 수정하기 위해 참조하였습니다.
+html의 form을 수정하기 위해 참조했습니다.
 
 이외에는 지난 세션 자료 참고했습니다.
+
+https://korinkorin.tistory.com/31
+댓글 수정 기능 구현을 위해 참조했습니다.
 
 <br/>
 
