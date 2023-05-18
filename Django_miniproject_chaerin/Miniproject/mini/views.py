@@ -1,19 +1,20 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Posting
-from .forms import Blogform
+from .models import *
+from .forms import *
 from django.utils import timezone
 
 # Create your views here.
 
 def home(request):
-    #posts=Posting.objects     #Blog데이터들을 객체형태로 blogs변수에 넣어줌
-    #return render(request,'home.html',{'blogs':blogs})
+    #posts=Posting.objects     #Post데이터들을 객체형태로 posts변수에 넣어줌
+    #return render(request,'home.html',{'posts':posts})
     return render(request,'home.html')
 
 
 def detail(request, post_id):
     post_detail=get_object_or_404(Posting,pk=post_id)
-    return render(request,'detail.html',{'post':post_detail})
+    post_hashtag=post_detail.hashtag.all()
+    return render(request,'detail.html',{'post':post_detail,'hashtags':post_hashtag})
 
 def week(request, pk):
     print(pk)
@@ -30,12 +31,17 @@ def new(request): #이동하는 함수
     return render (request,'new.html')
 
 def create(request): #저장
-    form=Blogform(request.POST,request.FILES)
+    form=Postform(request.POST,request.FILES)
     if form.is_valid(): #유효성 검사
-        new_blog=form.save(commit=False)
-        new_blog.date=timezone.now()
-        new_blog.save()
-        return redirect ('detail',new_blog.id)
+        new_post=form.save(commit=False)
+        new_post.date=timezone.now()
+        new_post.save()
+        hashtags=request.POST['hashtags']
+        hashtag=hashtags.split(",")
+        for tag in hashtag:
+            new_hashtag=HashTag.objects.get_or_create(hashtag=tag)
+            new_post.hashtag.add(new_hashtag[0])
+        return redirect ('detail',new_post.id)
     return redirect('home')
 	# post=Posting()
     # new_post.title=request.POST['title']
@@ -48,22 +54,65 @@ def create(request): #저장
 
 
 def delete(request, post_id):
-    blog_delete=get_object_or_404(Posting,pk=post_id)
-    blog_delete.delete()
+    post_delete=get_object_or_404(Posting,pk=post_id)
+    post_delete.delete()
+    # image = self.find_own_image(image_id)
+    # if image is None:
+    #     return Response(status=status.HTTP_401_UNAUTHORIZED)
+    # image.delete()
     return redirect('home')
 
 def update_page(request,post_id): #페이지 이동
     post_update=get_object_or_404(Posting,pk=post_id)
-    return render(request,'update.html',{'blog':post_update})
+    return render(request,'update.html',{'post':post_update})
 
 def update(request,post_id): #수정
     print(request)
-    blog_update=get_object_or_404(Posting,pk=post_id)
-    blog_update.title=request.POST['title']
-    blog_update.body=request.POST['body']
-    blog_update.date=timezone.now()
-    blog_update.category=request.POST['category']
-    #blog_update.image = request.FILES['image']
-    blog_update.save()
+    post_update=get_object_or_404(Posting,pk=post_id)
+    post_update.title=request.POST['title']
+    post_update.body=request.POST['body']
+    post_update.date=timezone.now()
+    post_update.category=request.POST['category']
+    #post_update.image = request.FILES['image']
+    post_update.save()
     return redirect('home')
 
+
+def add_comment(request,post_id):
+    post=get_object_or_404(Posting,pk=post_id)
+
+    if request.method == 'POST':
+        form = Commentform(request.POST)
+
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.post=post
+            comment.save()
+            return redirect('detail',post_id)
+        
+    else:
+        form = Commentform()
+
+    return render(request,'add_comment.html',{'form':form})
+
+
+def update_comment_page(request,comment_id):
+    comment_update=get_object_or_404(Comment,pk=comment_id)
+    post_ID=comment_update.post
+    return render(request,'update_comment.html',{'post':post_ID,'comment':comment_update})
+
+def update_comment(request,post_id,comment_id): #수정
+    print(request)
+    comment_update=get_object_or_404(Comment,pk=comment_id)
+    comment_update.username=request.POST['username']
+    comment_update.comment_text=request.POST['comment_text']
+    comment_update.created_at=timezone.now()
+    comment_update.post=get_object_or_404(Posting,pk=post_id)
+    #post_update.image = request.FILES['image']
+    comment_update.save()
+    return redirect('detail',post_id)
+
+def delete_comment(request,post_id, comment_id):
+    comment_delete=get_object_or_404(Comment,pk=comment_id)
+    comment_delete.delete()
+    return redirect('detail',post_id)
