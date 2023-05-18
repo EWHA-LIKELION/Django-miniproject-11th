@@ -38,7 +38,7 @@
     <strong class="username"><{{comment.username}}></strong>
     <div class="date" style="color:rgb(134,134,134)">{{comment.created_at}}</div>
     <P>{{comment.comment_text|linebreaks}}</P>
-    <a class="add_comment" href="{% url 'update_comment' blog.id comment.id %}" style="font-family:'Pretendard'; color:rgb(134, 134, 134);">댓글 수정</a>
+    <a class="add_comment" href="{% url 'comment_detail' comment.id %}" style="font-family:'Pretendard'; color:rgb(134, 134, 134);">댓글 수정</a>
 </div>
 {% empty %}
 <p style="color:white; font-family:'Pretendard'; margin:15px">아직 댓글이 없어요:(</p>

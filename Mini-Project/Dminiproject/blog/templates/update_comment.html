@@ -15,9 +15,9 @@
 </head>
 <body>
     
-    <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center">Updating Post</h1>
+    <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center">Updating Comment</h1>
     <hr style="border-color: white;">
-    <form action="{% url 'update2' blog.id %}" method="post" style="color:white;font-family: 'Pretendard'; ">
+    <form action="{% url 'comment_detail' comment.id %}" method='POST' style="color:white;font-family: 'Pretendard'; ">
 
         {% csrf_token %}
         
