@@ -28,4 +28,5 @@ urlpatterns = [
     path('delete/<int:ddabong_id>', ddabong.views.delete, name="delete"),
     path('update_page/<int:ddabong_id>', ddabong.views.update_page, name="update_page"),
     path('update/<int:ddabong_id>', ddabong.views.update, name="update2"),
+    path('<int:ddabong_id>/comment', ddabong.views.add_comment, name="add_comment"),
 ]
