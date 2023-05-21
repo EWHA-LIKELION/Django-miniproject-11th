@@ -67,3 +67,5 @@ def update(request,main_id):
     main_update.save()
     return redirect('main')
 '''
+
+# pr 다시 
