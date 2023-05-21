@@ -15,10 +15,15 @@
     <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
+        <!--forms 만들기 전-
         <p>제목: <input type="text" name="title"></p>
         <p>작성자 : <input type="text" name="username"></p>
         본문 : <textarea name="content" cols="30" rows="10"></textarea> 
+        -->
         <!--name="body" 얘를 안고쳐서 계속 오류가..-->
+
+        <!--forms 만든 후-->
+        {{form.as_p}}
 
         <button type="submit">제출</button>
         
