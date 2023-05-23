@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
 from .forms import *
 from django.utils import timezone
+from django.db.models import Q
 
 # Create your views here.
 
@@ -116,3 +117,10 @@ def delete_comment(request,post_id, comment_id):
     comment_delete=get_object_or_404(Comment,pk=comment_id)
     comment_delete.delete()
     return redirect('detail',post_id)
+
+def search(request):
+    search=request.GET.get('search','')
+    postf=Posting.objects.filter(        #제목 또는 내용에 search가 있는것 필터링 #2
+     Q(title__icontains = search) | Q(body__icontains = search)
+    )
+    return render(request, 'search.html',{'postf':postf}) 

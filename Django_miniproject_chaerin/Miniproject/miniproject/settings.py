@@ -115,9 +115,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-#이미지 업로드를 위해 추가함
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+# STATIC_URL = '/static/'
+# #이미지 업로드를 위해 추가함
+# STATIC_ROOT = os.path.join(BASE_DIR/ "static") #이러면 틀림
+STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    os.path.join(BASE_DIR,'mini','static'),
+]
+STATIC_ROOT = os.path.join('staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
