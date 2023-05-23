@@ -7,7 +7,8 @@ from .forms import Blogform, Commentform, HashTag
 
 
 def home(request):
-    blogs=Blog.objects 
+    blogs=Blog.objects
+    blogs=Blog.objects.all().order_by('-date') #오름차순으로 게시물 정렬
     return render(request,'home.html',{'blogs':blogs})
 
 def detail(request, blog_id):
@@ -64,3 +65,13 @@ def delete_comment(request, blog_id,comment_id):
     delete_comment=Comment.objects.get(pk=comment_id)
     delete_comment.delete()
     return redirect('detail', blog_id)
+
+def update_comment(request, blog_id,comment_id):
+    my_comment = Comment.objects.get(id=comment_id)
+    comment_form = Commentform(instance=my_comment)
+    if request.method == "POST" :
+        update_form = Commentform(request.POST, instance = my_comment)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect('detail', blog_id)
+    return render(request, 'update_comment.html', {'comment_form':comment_form})
