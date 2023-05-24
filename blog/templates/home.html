@@ -1,6 +1,15 @@
-<body style="padding:5px">
+{% extends 'base.html' %} 
 
-<h1>ReaDiary</h1>
+{% load static %} # static 파일 불러오기
+
+{% block head %} 
+<link rel="stylesheet" href="{% static 'css/test.css' %}">
+<link rel="stylesheet" href="{% static 'css/test2.css' %}">
+<title>Home</title>
+{% endblock %} 
+
+{% block content %} 
+<h1 style="margin-left: 10px;">📚ReaDiary💛</h1>
 <a href="{% url 'new' %}">+add book!</a>
 
 {% for blog in blogs.all %}
@@ -18,5 +27,5 @@ border-radius:10px; background-color:darkseagreen; ">
 </div>
 
 {% endfor %}
-</body>
+{% endblock %}
 
