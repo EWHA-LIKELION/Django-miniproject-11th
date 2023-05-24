@@ -1,20 +1,21 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Blog
+from .models import Blog, Comment
 from django.utils import timezone
-from .forms import Blogform, Commentform
+from .forms import Blogform, Commentform, HashTag
 
 # Create your views here.
 
 def home(request):
-    blogs=Blog.objects 
+    blogs=Blog.objects
+    blogs=Blog.objects.all().order_by('-date') #오름차순으로 게시물 정렬
     return render(request,'home.html',{'blogs':blogs})
 
 def detail(request, blog_id):
     blog_detail=get_object_or_404(Blog,pk=blog_id)
 
     comment_form = Commentform()
-
-    return render(request,'detail.html',{'blog':blog_detail, 'comment_form':comment_form})
+    blog_hashtag=blog_detail.hashtag.all()
+    return render(request,'detail.html',{'blog':blog_detail, 'comment_form':comment_form, 'hashtags':blog_hashtag})
 
 def new(request):
     form=Blogform()
@@ -26,6 +27,11 @@ def create(request):
         new_blog=form.save(commit=False)
         new_blog.date=timezone.now()
         new_blog.save()
+        hashtags=request.POST['hashtags']
+        hashtag=hashtags.split(", ")
+        for tag in hashtag:
+            new_hashtag=HashTag.objects.get_or_create(hashtag=tag)
+            new_blog.hashtag.add(new_hashtag[0])
         return redirect('detail', new_blog.id)
     return redirect('home')
 
@@ -53,3 +59,18 @@ def create_comment(request, blog_id):
         finished_form.post = get_object_or_404(Blog,pk=blog_id)
         finished_form.save()
     return redirect('detail', blog_id)
+
+def delete_comment(request, blog_id,comment_id):
+    delete_comment=Comment.objects.get(pk=comment_id)
+    delete_comment.delete()
+    return redirect('detail', blog_id)
+
+def update_comment(request, blog_id,comment_id):
+    my_comment = Comment.objects.get(id=comment_id)
+    comment_form = Commentform(instance=my_comment)
+    if request.method == "POST" :
+        update_form = Commentform(request.POST, instance = my_comment)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect('detail', blog_id)
+    return render(request, 'update_comment.html', {'comment_form':comment_form})
