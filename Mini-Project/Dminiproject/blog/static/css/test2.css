@@ -1,0 +1,9 @@
+h1{
+    color:rgb(229,9,20) !important; 
+}
+
+hr{
+    border: 0 !important;
+    height: 1.6px !important;
+    background-color: rgba(255, 255, 255, 1) !important;
+}

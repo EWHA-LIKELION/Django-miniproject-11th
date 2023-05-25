@@ -5,7 +5,7 @@ from dataclasses import field
 class Blogform(forms.ModelForm):
     class Meta:
         model=Blog
-        fields=['type','title','body']
+        fields=['type','title','body','photo']
 
 class CommentForm(forms.ModelForm):
     class Meta:

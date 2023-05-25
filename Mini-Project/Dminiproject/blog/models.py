@@ -15,6 +15,7 @@ class Blog(models.Model):
     date = models.DateTimeField('date published') #게시 날짜
     body = models.TextField('Content',default='') #본문
     hashtag=models.ManyToManyField(HashTag)
+    photo = models.ImageField(blank=True, null=True, upload_to="blog_photo")
 
     def __str__(self):
         return self.type
