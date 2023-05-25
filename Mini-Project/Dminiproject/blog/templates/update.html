@@ -6,14 +6,14 @@
 
 {% block content %}    
     <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center;padding-top:30px; padding-bottom:15px; font-weight:700">Updating Post</h1>
-    <hr style="border-color: white;">
-    <form action="{% url 'update2' blog.id %}" method="post" style="color:white;font-family: 'Pretendard'; ">
+    <hr style="margin-bottom:25px;">
+    <form action="{% url 'update2' blog.id %}" method="post" style="color:white;font-family: 'Pretendard'; margin:10px ">
 
         {% csrf_token %}
         <p>공연명:</p>
-        <input type="text" name="type" value="{{blog.type}}" style="width:400px; height:20px"></p>
+        <input type="text" name="type" value="{{blog.type}}" style="width:400px; height:30px"></p>
         <p>제목:</p>
-        <input type="text" name="title" value="{{blog.title}}" style="width:400px; height:20px"> </p>
+        <input type="text" name="title" value="{{blog.title}}" style="width:400px; height:30px"> </p>
                
         <p>본문 :</p>
         <div style="margin-bottom:17px">
@@ -23,11 +23,10 @@
         <!--
         <p>해시태그 :</p>
         <input type="text" name="hashtags" value="{{blog.hashtag}}" style="width:400px; height:20px"> </p>
-        -->
-
-        <hr style="border-color: white;">
-        <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600;">등록</button>
-        <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; font-weight: 600; float:left; margin:5px">홈으로 돌아가기</button>
-        
+        -->     
+        <hr style="margin-top:25px;">
+        <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px">등록</button>
+        <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; font-weight: 600; float:left; margin:5px; font-size:14px">홈으로 돌아가기</button>       
     </form>
+   
 {% endblock %}
