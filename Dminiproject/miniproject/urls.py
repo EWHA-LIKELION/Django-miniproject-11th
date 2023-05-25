@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 import miniblog.views
 
@@ -28,4 +30,5 @@ urlpatterns = [
     path('main/delete/<int:main_id>',miniblog.views.delete,name='delete'),
     path('main/update_page/<int:main_id>',miniblog.views.update_page,name='update_page'),
     path('main/update/<int:main_id>', miniblog.views.update,name='update2'),
-]
+    path('main/<int:main_id>/comment',miniblog.views.add_comment, name="add_comment"),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
