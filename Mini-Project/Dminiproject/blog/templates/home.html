@@ -9,16 +9,31 @@
 {% endblock %}
 
 {% block content %}
-    <h2 style="color:white; margin:15px; padding:30px; padding-top:50px; padding-bottom:0px; text-align: center; font-size:30px; font-family:'Times New Roman', Times, serif; font-style:italic">"Share Your Musical Experience"</h2>
+    <h2 style="color:white; margin:15px; padding:30px; padding-top:70px; padding-bottom:0px; text-align: center; font-size:30px; font-family:'Times New Roman', Times, serif; font-style:italic">"Share Your Musical Experience"</h2>
     <h1 style="color:rgb(229,9,20); text-align:center; font-size:50px; font-family: 'Elephant'; padding-top:15px; padding-bottom:10px;font-weight: 400;">MuShare</h1>
 
     <div style="text-align:center; margin-bottom:40px;">
     <img src="{% static 'img/하이.png' %}" alt="" width="200px;" >
     </div>
+    
+    {% if user.is_authenticated %}
+        <h3 style="text-align: center; color:white; font-family: 'Times New Roman', Times, serif; font-weight:500; margin-bottom:20px;"> &#91; User Information &#93; </h3>
+        <div style="text-align: center; color:white"> ID : {{user.username}} </div>
+        <br>
+        <div style="text-align: center; color:white; margin-bottom:80px;">Name : {{user.nickname}}  &nbsp;|&nbsp; Favorites : {{user.favorite}}  &nbsp;|&nbsp; Interests : {{user.interest}}</div>
+    {% endif %}
 
+    {% if not user.is_authenticated %}
+      <h3 style="text-align: center; color:white; font-family: 'Times New Roman', Times, serif; font-weight:500; margin-bottom:20px;"> &#91; User Information &#93; </h3>
+      <div style="text-align: center; color:white; margin-bottom:80px; margin-top:40px"> 로그인 후 이용 가능합니다. </div>
+    {% endif %}
+
+    <!--
     <hr style="border-color: white;">
+    -->
+
     <h2 style="color:rgb(229,9,20); margin:15px;display:inline; text-align: left; font-size:30px; font-weight:700">Posts</h2>
-    <button type="button" onClick="location.href='http://127.0.0.1:8000/new/'" style="color: rgb(229,9,20); font-family: 'Pretendard'; float:right; margin:5px;">New Post</button>
+    <button type="button" onClick="location.href='http://127.0.0.1:8000/new/'" style="color: rgb(229,9,20); font-family: 'Pretendard'; float:right; margin:5px; font-weight:600;">New Post</button>
     {% for blog in blogs.all %}
     
     <hr style="border-color: white;">

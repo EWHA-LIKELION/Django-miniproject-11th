@@ -18,11 +18,25 @@
     <nav class="navbar navbar-expand-lg" style="background-color:rgb(0, 0, 0); margin-left:30px; margin-right:30px;">
         <div class="container-fluid" style="background-color:rgb(0, 0, 0); height:70px; font-size:20px">
           <a class="navbar-brand" style="color:rgb(229,9,20); font-size:30px; font-weight:400; font-family:'Elephant'" href="{% url 'home' %}">MuShare</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: rgb(255, 255, 255);">
-            <span class="navbar-toggler-icon" style="background-color:rgb(0, 0, 0)"></span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!--<span class="navbar-toggler-icon" style="background-color:rgb(255, 160, 160)"></span>-->
+            <img src="{% static 'img/tog.png' %}" alt="" width="30px;" >
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: black;">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if not user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" style="color:white; margin-right:10px" >Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}" style="color:white; margin-right:10px" >Sign Up</a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" style="color:white; margin-right:10px" >Logout</a>
+              </li>
+              {% endif %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" style="color:white; margin-right:10px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Posting
@@ -39,12 +53,6 @@
                 <a class="nav-link active" aria-current="page" href="https://www.youtube.com/watch?v=rrI7tOhoVzA" style="color:rgb(140, 140, 140)">Today's Recommendation</a>
               </li>
               
-              
-              <!--
-              <li class="nav-item">
-                <a class="nav-link disabled" style="color:rgb(255, 255, 255)">Enjoy the show!</a>
-              </li>
-              -->
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -54,14 +62,20 @@
         </div>
       </nav>
 
+      <!--
       <hr style="border-color: white; margin-top:0; padding-top:0;">
-    
+    -->
     <div style="padding-left:120px;padding-right:120px;">
     {% block content %}
     {% endblock %}
+    <div style="margin-top:50px; margin-bottom:50px; text-align: center;">
+      <h5 style="font-family:'Times New Roman', Times, serif; color:white; font-style: italic; display:inline;">Share & Get Musical Information with&nbsp;</h5>
+      <h4 style="font-family:'Elephant';color:rgb(229,9,20); display:inline;">MuShare</h4>
+    </div>
     </div>
 
-</body>
+ </body>
+
 </html>
 
 <!--new 페이지에서 파일 선택하는거 창 검정으로 바꾸고 동시에 글씨도 흰색으로 바꿀것, 아님 색은 그냥 두고 선택창 사이즈만 좀 줄이자-->

@@ -7,8 +7,9 @@
 {% block content %}
 <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center; padding-top:30px; padding-bottom:15px; font-weight:700">New Post</h1>
 <hr style="border-color: white; margin-bottom:25px">
-<form action="{% url 'create' %}" method="post" enctype="multipart/form-data" style="color:white;font-family: 'Pretendard'; margin:10px ">
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
 
+    <div style="color:white;font-family: 'Pretendard'; margin:10px">
     {% csrf_token %}
     <p>공연명:</p>
     <input type="text" name="type" placeholder="공연명을 입력하세요" style="width:400px; height:30px"></p>
@@ -22,10 +23,12 @@
     <input type="file" class="form-control" name="photo" style="background-color: black; color:white; margin-bottom:15px">
     <p>해시태그 :</p>
     <input type="text" name="hashtags" placeholder="해시태그 , 로 구분" style="width:400px; height:30px">
+    </div>
+
     <hr style="border-color: white; margin-top:25px">
     <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px" >등록</button>
     <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px">홈으로 돌아가기</button>
-    
-</form>
 
+</form>
+<br>
 {% endblock %}

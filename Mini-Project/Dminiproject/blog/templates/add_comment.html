@@ -7,7 +7,8 @@
 {% block content %}
 <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center;padding-top:30px; padding-bottom:15px; font-weight:700">New Comment</h1>
 <hr style="margin-bottom:25px">
-<form method="POST" class="post-form" style="color:white;font-family: 'Pretendard'; margin:10px ">
+<form method="POST" class="post-form" >
+    <div style="color:white;font-family: 'Pretendard'; margin:10px"> 
     {% csrf_token %}
     <p>닉네임:</p>
     <input type="text" name="username" placeholder="닉네임을 입력하세요" style="width:400px; height:30px"></p>
@@ -15,10 +16,11 @@
     <div style="margin-bottom:17px">
     <textarea name="comment_text" cols="54" rows="10" placeholder="내용을 입력하세요"; font-family: inherit;></textarea>
     </div>
+    </div>
     <hr style="margin-top:25px">
     <!--<button type="submit" class="save btn btn-default" style="color: rgb(255, 255, 255);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 400; font-size:14px; border-color:white;">등록</button>-->
     <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px">등록</button>
 
 </form>
-
+<br>
 {% endblock %}

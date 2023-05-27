@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center; padding-top:30px; padding-bottom:15px; font-weight:700">Login</h1>
+<hr style="border-color: white; margin-bottom:40px">
+<div style="text-align:center;">
+<form action="{% url 'login' %}" method="post" style="color:white;font-family: 'Pretendard'; margin:10px; float:center;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit" style="width:300px; height: 30px; color:rgb(255, 255, 255); background-color: rgb(229,9,20); font-weight: 500; border:none; margin-top:10px; margin-bottom:10px">로그인</button>
+    <br><br>
+    <p style="display:inline">아직 MuShare의 회원이 아니라면?&nbsp;</p>
+    <a style="display:inline; color:white" href="{% url 'signup' %}">가입하기</a>
+    
+</form>
+</div>
+<hr style="border-color: white; margin-top:40px">
+{% endblock %}
