@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 import mini.views
+import account.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,4 +36,7 @@ urlpatterns = [
     path('update_comment/<int:post_id>/<int:comment_id>',mini.views.update_comment,name="update_comment"),
     path('delete_comment/<int:post_id>/<int:comment_id>',mini.views.delete_comment,name="delete_comment"),
     path('search', mini.views.search, name="search"), #검색기능 추가
+    path('account/login',account.views.login_view,name="login"),
+    path('account/logout',account.views.logout_view,name="logout"),
+    path('account/signup',account.views.signup_view,name="signup"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) #이미지 추가를 위해
