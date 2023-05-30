@@ -1,7 +1,7 @@
-from typing import Any, Set
+#from typing import Any, Set
 from django.db import models
 from django.utils import timezone
-from django.urls import reverse
+#from django.urls import reverse
 
 # Create your models here.
 
@@ -16,7 +16,8 @@ class Blog(models.Model):
     date=models.DateTimeField('date published')
     body=models.TextField()
     hashtag=models.ManyToManyField(HashTag)
-    category = models.CharField(max_length=50,default="")
+    photo=models.ImageField(blank=True, null=True, upload_to="blog_photo")
+
 
     def __str__(self):
         return self.title
@@ -29,7 +30,6 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Blog,on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
-
     def __str__(self):
         return self.comment
     

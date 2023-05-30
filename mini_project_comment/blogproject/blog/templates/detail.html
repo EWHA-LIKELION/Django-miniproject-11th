@@ -1,5 +1,15 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Detail</title>
+{% endblock %}
+{% block content %}
 <h3>{{blog.title}}</h3>
 {{blog.date}}
+<br>
+{% if blog.photo %} 
+<br>
+<img src="{{ blog.photo.url }}" alt="" height="200px">
+{% endif %} 
 <br>
 {{blog.body}}
 <br>
@@ -20,12 +30,15 @@
     {{ comment_form }}
     <input type="submit">
 </form>
+<br>
 
 <h4>댓글 목록</h4>
 
 {% for comment in blog.comment_set.all %}
-<p>{{ comment }}, {{ comment.date }}</p>
+<p>{{ comment }} - {{ comment.date }}</p>
     <a href="{% url 'delete_comment' blog.id comment.id %}">삭제</a>
+    <a href="{% url 'update_comment' blog.id comment.id %}">수정</a>
 
     <hr>
 {% endfor %}
+{% endblock %}
