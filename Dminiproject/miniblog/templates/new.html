@@ -1,20 +1,48 @@
+{% extends 'base.html' %} 
+
+{% block head %} 
+<title>new</title> 
+{% endblock %} 
+
+{% block content %} 
+<h1>Creating Post</h1>
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <!--forms 만들기 전-
+    <p>제목: <input type="text" name="title"></p>
+    <p>작성자 : <input type="text" name="username"></p>
+    본문 : <textarea name="content" cols="30" rows="10"></textarea> 
+    -->
+    <!--name="body" 얘를 안고쳐서 계속 오류가..-->
+
+    <!--forms 만든 후-->
+    {{form.as_p}}
+    해시태그: <input type="text" name="hashtags" placeholder="해시태그 , 로 구분">
+    <button type="submit">제출!</button>
+    
+</form>
+{% endblock %}
+
+
+<!---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}
+    
     <title>new</title>
-    {% endblock %}
+    
 </head>
-<body>
-    {% block content %}
+<body>-->
+    
     <h1>Creating Post</h1>
 
     <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
 
-        {% csrf_token %}
+        {% csrf_token %}-->
         <!--forms 만들기 전-
         <p>제목: <input type="text" name="title"></p>
         <p>작성자 : <input type="text" name="username"></p>
@@ -23,11 +51,11 @@
         <!--name="body" 얘를 안고쳐서 계속 오류가..-->
 
         <!--forms 만든 후-->
-        {{form.as_p}}
-
-        <button type="submit">제출</button>
+        <!--{{form.as_p}}
+        해시태그: <input type="text" name="hashtags" placeholder="해시태그 , 로 구분">
+        <button type="submit">제출!</button>
         
     </form>
-    {% endblock %}
+    
 </body>
 </html>
