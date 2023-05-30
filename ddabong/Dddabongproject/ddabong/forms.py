@@ -5,7 +5,7 @@ from .models import Ddabong, Comment
 class Ddabongform(forms.ModelForm):
     class Meta :
         model = Ddabong
-        fields = ['title', 'body']
+        fields = ['title', 'body', 'photo']
 
 class CommentForm(forms.ModelForm):
     class Meta:

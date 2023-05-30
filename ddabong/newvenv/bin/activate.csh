@@ -8,7 +8,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/yoonseoah/Desktop/likelion/ddabong/newvenv"
+setenv VIRTUAL_ENV "/Users/yoonseoah/Desktop/likelion/Django-miniproject-11th/ddabong/newvenv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"

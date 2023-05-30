@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 import ddabong.views
 
@@ -29,4 +31,4 @@ urlpatterns = [
     path('update_page/<int:ddabong_id>', ddabong.views.update_page, name="update_page"),
     path('update/<int:ddabong_id>', ddabong.views.update, name="update2"),
     path('<int:ddabong_id>/comment', ddabong.views.add_comment, name="add_comment"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

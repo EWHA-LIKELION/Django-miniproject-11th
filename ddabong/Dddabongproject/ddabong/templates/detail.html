@@ -1,11 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Detail</title>
+{% endblock %}
+
+{% block content %}
 <h3>{{ddabong.title}}</h3>
 {{ddabong.date}}
+<br>
+{% if ddabong.photo %}
+<img src="{{ ddabong.photo.url }}" alt="" height="200px;">
+{% endif %}
 <br>
 {{ddabong.body}}
 <br>
 <div>
     {% for hashtag in hashtags.all %}
-    #{{hashtag}}
+    {{hashtag}}
     {% endfor %}
 </div>
 
@@ -26,3 +37,4 @@
 {% empty %}
     <p>아직 댓글이 없어요 :(</p>
 {% endfor %}
+{% endblock %}
