@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -16,6 +17,11 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('home')
+        else:
+            print("로그인 실패!")
+            messages.add_message(request, messages.INFO, '회원 정보가 없습니다. 다시 입력해주세요')
+            form=AuthenticationForm()
+            return render(request, 'login.html',{'form':form})
     else:
         form=AuthenticationForm()
         return render(request, 'login.html',{'form':form})
