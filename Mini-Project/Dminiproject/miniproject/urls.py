@@ -40,4 +40,6 @@ urlpatterns = [
     path('account/login', account.views.login_view, name="login"),
     path('account/logout', account.views.logout_view, name="logout"),
     path('account/signup', account.views.signup_view, name="signup"),
+    #path('error/', account.views.login_view, name="error"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
