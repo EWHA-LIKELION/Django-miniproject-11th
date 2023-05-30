@@ -1,7 +1,18 @@
+{% extends 'base.html' %} 
+
+{% block head %} 
+<title>Detail</title>
+{% endblock %} 
+
+{% block content %} 
 <h3>{{blog.title}}</h3>
 {{blog.author}}
 <br>
 {{blog.date}}
+<br>
+{% if blog.photo %} 
+<img src="{{ blog.photo.url }}" alt="" height="200px;">
+{% endif %}
 <br>
 {{blog.body}}
 <br>
@@ -25,3 +36,4 @@
 {% empty %}
     <p>아직 댓글이 없어요 :(</p>
 {% endfor %}
+{% endblock %} 
