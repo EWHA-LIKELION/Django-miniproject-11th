@@ -11,9 +11,15 @@ read.me 파일 열심히 작성해주세요!
 
 ### [댓글 수정] 구현중...
 댓글 수정을 위해 views.py 파일에 comment_detail과 update_comment 함수를 새로 만들고 comment_id를 사용해 수정하도록 함수를 정의했습니다. 그리고 urls에 'update_comment/<int:comment_id>'를 추가하고 update_comment.html 파일도 만들었습니다. 그러나 안됩니다... 뭐가 문제일까요... -> 230525 forms.py의 BlogForm에 hashtag를 추가하지 않았었다는걸 발견했습니다. 그러나 이게 연관이 있는지 왜 없는지는 모르겠습니다 -> BlogForm에 hashtag를 추가했더니 submit해도 저장이 안되는 문제가 생겼습니다. 다시 지워서 문제는 해결했지만 이유를 모르겠습니다...
+230530 성공!!!!! 이전 실패의 이유는 다음과 같습니다
+1) comment_detail에 게시물 id를 받아오지 않았었던것...
+2) views.py의 update_comment의 redirect로 'detail' 페이지로 돌아갈 때 blog_id만 받으면 되는데 comment_id까지 받아온 것...
+3) update_comment.html의 input 태그의 name을 'username'으로 views.py와 통일하지 않았음!!
+
 
 ### [유저인증과 확장]
 세션에서 진행한 코드 참고하여 구현했습니다.
+회원가입 진행 시에 비밀번호 조건을 만족하지 않으면 오류가 뜹니다.
  
 ### [html/css 기록]
 지난 세션에서 진행한 것과 조금 다르게 html에서 a 태그가 아닌 button을 사용했는데, 이이에 링크를 추가하는 과정에서 그 뒤에 페이지 인덱스를 붙이는 방법을 찾지 못해 오류를 해결하지 못한 상태입니다. html 오류가 뜨지만 실행은 정상적으로 되고있습니다.
