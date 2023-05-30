@@ -1,4 +1,6 @@
-<body style="padding:5px">
+{% extends 'base.html' %}
+{% block content %}
+<div style="padding:5px">
 
     <h1>{{posts.first.category}}요일</h1>
     
@@ -10,10 +12,11 @@
     <h3>{{post.title}}</h3>
     {{post.date}}
     <br>
-    <img src="{{post.image.url}}" style="height: 50;">
+    <img src="{{post.image.url}}" style="height: 50px;">
     {{blog.summary}}
     <a href="{% url 'detail' post.id%}">...more</a>
     </div>
     
     {% endfor %}
-    </body>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>검색</title>
+{% endblock %}
+{% block content %}
+    
+<div>
+    {% for post in postf %}                
+            <li><a href="{% url 'detail' post.id %}">{{post.title}}</a></li>
+            <span>{{post.date}}</span>
+    {% endfor %}
+</div>
+    
+{% endblock %}
+
