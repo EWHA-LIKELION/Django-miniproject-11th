@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center; padding-top:30px; padding-bottom:15px; font-weight:700">Sign Up</h1>
+<hr style="border-color: white; margin-bottom:40px">
+
+<form action="{% url 'signup' %}" method="post"  style="color:white;font-family: 'Pretendard'; margin:10px; float:center;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!--<button type="submit">회원가입</button>-->
+    <div style="text-align:center;">
+    <button type="submit" style="width:300px; height: 30px; color:rgb(255, 255, 255); background-color: rgb(229,9,20); font-weight: 500; border:none; margin-top:10px; margin-bottom:10px">회원가입</button>
+    </div>
+
+  
+</form>
+<hr style="border-color: white; margin-top:40px">
+{% endblock %}

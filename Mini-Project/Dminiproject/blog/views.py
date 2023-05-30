@@ -47,7 +47,7 @@ def update(request,blog_id):
     blog_update.body=request.POST['body']
     #blog_update.hashtag=request.POST['hashtags']
     blog_update.save()
-    return redirect('home')
+    return redirect('detail',blog_id)
 
 def add_comment(request,blog_id):
     blog = get_object_or_404(Blog, pk=blog_id)
@@ -78,7 +78,7 @@ def update_comment(request, blog_id, comment_id): #댓글 업데이트 저장
     comment_update.username=request.POST['username']
     comment_update.comment_text=request.POST['comment_text']
     comment_update.save()
-    return redirect('detail',blog_id)
+    return redirect('detail',blog_id, comment_id)
     #my_comment=Comment.objects.get(id=comment_id)
     #comment_form=CommentForm(instance=my_comment)
     #if request.method == "POST":

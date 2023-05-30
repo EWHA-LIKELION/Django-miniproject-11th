@@ -1,40 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-<body style="padding:50px; background-color:black; padding-left:150px;padding-right:150px">
+{% block head %}
+<title>New Post</title>
+{% endblock %}
 
+{% block content %}
+<h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center; padding-top:30px; padding-bottom:15px; font-weight:700">New Post</h1>
+<hr style="border-color: white; margin-bottom:25px">
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}
-    <title>new</title>
-    {% endblock %}
-</head>
-<body>
-    {% block content %}
-    <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center">New Post</h1>
-    <hr style="border-color: white;">
-    <form action="{% url 'create' %}" method="post" enctype="multipart/form-data" style="color:white;font-family: 'Pretendard'; ">
+    <div style="color:white;font-family: 'Pretendard'; margin:10px">
+    {% csrf_token %}
+    <p>공연명:</p>
+    <input type="text" name="type" placeholder="공연명을 입력하세요" style="width:400px; height:30px"></p>
+    <p>제목: </p>
+    <input type="text" name="title" placeholder="게시물의 제목을 입력하세요" style="width:400px; height:30px"></p>
+    <p>본문 :</p>
+    <div style="margin-bottom:17px">
+    <textarea name="body" cols="54" rows="10" placeholder="내용을 입력하세요"; font-family: inherit;></textarea>
+    </div>
+    <p>사진: </p>
+    <input type="file" class="form-control" name="photo" style="background-color: black; color:white; margin-bottom:15px">
+    <p>해시태그 :</p>
+    <input type="text" name="hashtags" placeholder="해시태그 , 로 구분" style="width:400px; height:30px">
+    </div>
 
-        {% csrf_token %}
-        <p>공연명:</p>
-        <input type="text" name="type" placeholder="공연명을 입력하세요" style="width:400px; height:20px"></p>
-        <p>제목: </p>
-        <input type="text" name="title" placeholder="게시물의 제목을 입력하세요" style="width:400px; height:20px"></p>
-        <p>본문 :</p>
-        <div style="margin-bottom:17px">
-        <textarea name="body" cols="54" rows="10" placeholder="내용을 입력하세요"; font-family: inherit;></textarea>
-        </div>
-        <p>해시태그 :</p>
-        <input type="text" name="hashtags" placeholder="해시태그 , 로 구분" style="width:400px; height:20px">
-        <hr style="border-color: white;">
-        <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600;" >등록</button>
-        <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600;">홈으로 돌아가기</button>
+    <hr style="border-color: white; margin-top:25px">
+    <button type="submit" style="color: rgb(0, 0, 0);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px" >등록</button>
+    <button type="button" onClick="location.href='http://127.0.0.1:8000/'" style="color: rgb(229,9,20);font-family: 'Pretendard'; float:left; margin:5px; font-weight: 600; font-size:14px">홈으로 돌아가기</button>
 
-    </form>
-    {% endblock %}
-</body>
-</html>
+</form>
+<br>
+{% endblock %}

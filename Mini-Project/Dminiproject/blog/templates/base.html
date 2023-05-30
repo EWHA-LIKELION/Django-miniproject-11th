@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/test2.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body style="padding-top:0px; background-color:black; font-family:'Pretendard'">
+
+    <nav class="navbar navbar-expand-lg" style="background-color:rgb(0, 0, 0); margin-left:30px; margin-right:30px;">
+        <div class="container-fluid" style="background-color:rgb(0, 0, 0); height:70px; font-size:20px">
+          <a class="navbar-brand" style="color:rgb(229,9,20); font-size:30px; font-weight:400; font-family:'Elephant'" href="{% url 'home' %}">MuShare</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!--<span class="navbar-toggler-icon" style="background-color:rgb(255, 160, 160)"></span>-->
+            <img src="{% static 'img/tog.png' %}" alt="" width="30px;" >
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: black;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if not user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" style="color:white; margin-right:10px" >Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}" style="color:white; margin-right:10px" >Sign Up</a>
+              </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}" style="color:white; margin-right:10px" >Logout</a>
+              </li>
+              {% endif %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color:white; margin-right:10px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Posting
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'new' %}">New Post</a></li>
+                  <li><a class="dropdown-item" href="https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg">Surprise!</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="color:white; margin-right:10px" href="http://ticket.interpark.com/">Ticket</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://www.youtube.com/watch?v=rrI7tOhoVzA" style="color:rgb(140, 140, 140)">Today's Recommendation</a>
+              </li>
+              
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" style="color:rgb(229,9,20); border-color:rgb(229,9,20)">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <!--
+      <hr style="border-color: white; margin-top:0; padding-top:0;">
+    -->
+    <div style="padding-left:120px;padding-right:120px;">
+    {% block content %}
+    {% endblock %}
+    <div style="margin-top:50px; margin-bottom:50px; text-align: center;">
+      <h5 style="font-family:'Times New Roman', Times, serif; color:white; font-style: italic; display:inline;">Share & Get Musical Information with&nbsp;</h5>
+      <h4 style="font-family:'Elephant';color:rgb(229,9,20); display:inline;">MuShare</h4>
+    </div>
+    </div>
+
+ </body>
+
+</html>
+
+<!--new 페이지에서 파일 선택하는거 창 검정으로 바꾸고 동시에 글씨도 흰색으로 바꿀것, 아님 색은 그냥 두고 선택창 사이즈만 좀 줄이자-->
