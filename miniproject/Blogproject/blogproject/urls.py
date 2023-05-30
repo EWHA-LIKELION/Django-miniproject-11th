@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 import blog.views
 
@@ -30,5 +32,4 @@ urlpatterns = [
     path('update/<int:blog_id>',blog.views.update,name="update2"),
     path('<int:blog_id>/comment',blog.views.add_comment,name="add_comment"),
     
-    
-]
+] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
