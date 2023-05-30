@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/test.css' %}">
+<link rel="stylesheet" href="{% static 'css/test2.css' %}">
+<title>Home</title>
+{% endblock %} 
+{% block content %} 
+        <h1>&nbsp;&nbsp;오늘의 날씨 🌤 </h1>
+        
+        {% if user.is_authenticated %} 
+        &nbsp;&nbsp;&nbsp;&nbsp;      아이디: {{user.username}} 닉네임: {{user.nickname}} 대학: {{user.university}} 위치: {{user.location}} 
+        {% endif %}
+        <hr>
+        {% for blog in blogs.all %}
+        
+        <div style="margin:20px; padding:15px; border: 1px solid; border-color: gray;
+        border-radius: 10px; background-color: rgb(237, 241, 254); ">
+        <h3>{{blog.title}}</h3>
+        {{blog.date}}
+        <br>
+        {{blog.summary}}
+        <a href="{% url 'detail' blog.id%}">...more</a>
+        </div>
+        
+        {% endfor %}
+        {% endblock %} 
