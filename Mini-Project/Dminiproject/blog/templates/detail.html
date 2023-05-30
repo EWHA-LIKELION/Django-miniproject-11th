@@ -52,6 +52,7 @@
 <hr style="border-color: white; margin:10px; margin-top:15px; margin-bottom:10px;">
 <div class="comment" style="color:white; margin:20px; font-family: 'Pretendard';">
     <strong class="username" style="font-weight:700"><{{comment.username}}></strong>
+    <a href="{% url 'delete_comment' blog.id comment.id %}" style="font-family:'Pretendard'; color:rgb(134, 134, 134); display:inline;float:right;margin-right:10px">삭제하기</a>
     <a href="{% url 'comment_detail' comment.id %}" style="font-family:'Pretendard'; color:rgb(134, 134, 134); display:inline;float:right;margin-right:10px">수정하기</a>
     <div class="date" style="color:rgb(134,134,134)">{{comment.created_at}}</div>
     <P style="padding:0px;">{{comment.comment_text|linebreaks}}</P>

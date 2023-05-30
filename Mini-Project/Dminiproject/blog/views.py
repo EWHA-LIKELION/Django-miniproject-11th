@@ -33,7 +33,7 @@ def create(request):
         return redirect('detail',new_blog.id)
     return redirect('home')
 
-def delete(reqeust,blog_id):
+def delete(request,blog_id):
     blog_delete=get_object_or_404(Blog,pk=blog_id)
     blog_delete.delete()
     return redirect('home')
@@ -83,11 +83,10 @@ def update_comment(request, blog_id, comment_id): #댓글 업데이트 저장
     comment_update.post=comment_post
     comment_update.save()
     return redirect('detail',blog_id)
-    #my_comment=Comment.objects.get(id=comment_id)
-    #comment_form=CommentForm(instance=my_comment)
-    #if request.method == "POST":
-    #    update_form = CommentForm(request.POST, instance=my_comment)
-    #    if update_form.is_valid():
-    #        update_form.save()
-    #        return redirect('detail', blog_id)
-    #return render(request, 'update_comment.html',{'comment_form':comment_form})
+    
+def delete_comment(request,blog_id,comment_id):
+    comment_delete=get_object_or_404(Comment,pk=comment_id)
+    comment_post=get_object_or_404(Blog,pk=blog_id) #1
+    comment_delete.post=comment_post #2
+    comment_delete.delete()
+    return redirect('detail',blog_id)

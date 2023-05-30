@@ -16,6 +16,9 @@ read.me 파일 열심히 작성해주세요!
 2) views.py의 update_comment의 redirect로 'detail' 페이지로 돌아갈 때 blog_id만 받으면 되는데 comment_id까지 받아온 것...
 3) update_comment.html의 input 태그의 name을 'username'으로 views.py와 통일하지 않았음!!
 
+### [댓글 삭제]
+view.py에 delete_comment라는 함수 정의, blog_id와 comment_id르 모두 받아왔습니다.
+comment_id를 받아온 이유는 댓글 삭제 후 detial 페이지로 redirect하기 위함입니다. 댓글 수정과 삭제를 구현하며 알게된 것은 blog_id를 받아서 저장하는 변수 하나, comment_id를 받아온 변수에 .post를 붙여 models의 Comment에 있는 외래키 post에 받아온 blog_id를 저장하는 코드 한줄 일케 두개가 한 세트로 필요하다는 것 입니다. 설명을 너무 못했네 미래의 나야 views.py의 delete_comment의 #1과 #2 주석을 봐라!! urls에서 blog.id와 comment.id 둘 다 받는 걸 깜빡해서 오류가 떴었습니다. 받아와야 하는 값 꼼꼼히 체크하기!!
 
 ### [유저인증과 확장]
 세션에서 진행한 코드 참고하여 구현했습니다.
@@ -38,6 +41,7 @@ read.me 파일 열심히 작성해주세요!
 230525 - static & media 기능을 추가했습니다.
 230525 - 유저 로그인, 로그아웃, 회원가입 기능을 추가했습니다.
 230527 - blog의 views.py에서 수정 시에 메인 홈으로 리디렉트 되던 것을 디테일 페이지로 리디렉트되도록 수정했습니다.
+230530 - 댓글 삭제 기능 추가했습니다.
 
 <br/>
 
