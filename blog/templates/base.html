@@ -34,6 +34,20 @@
                 <li><a class="dropdown-item" href="http://www.yes24.com/Campaign/06_eBook/2021/0701Ebookfirst.aspx?pid=123487&cosemkid=go16777207386083274&gclid=CjwKCAjw67ajBhAVEiwA2g_jEP77_RnklB2QwZl_AUqNC3wCmdgGyEImmjeimUre9Z-g6HRxwg8TthoCkX8QAvD_BwE">📙yes24</a></li>
             </ul>
             </li>
+            {% if not user.is_authentiated %} 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">🥰Login</a>
+                </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
+            </li>
+            {% endif %}
+            {% if user.is_authenticated%} 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">😪Logout</a>
+                </li>
+                {% endif %} 
+            
         </ul>
         </div>
     </div>
