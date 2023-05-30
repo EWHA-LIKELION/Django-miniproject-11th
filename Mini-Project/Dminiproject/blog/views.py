@@ -3,6 +3,8 @@ from .models import Blog, Comment, HashTag
 from django.utils import timezone
 from .forms import Blogform, CommentForm
 # Create your views here.
+#superuser - jieun3977/rlawldms828!
+#테스트 user - silver/rlawldms828! 
 
 def home(request):
     blogs=Blog.objects
@@ -68,7 +70,8 @@ def add_comment(request,blog_id):
 
 def comment_detail(request, comment_id): #댓글 업데이트 페이지 이동
     comment_detail=get_object_or_404(Comment,pk=comment_id)
-    return render(request,'update_comment.html',{'comment':comment_detail})
+    post_ID=comment_detail.post
+    return render(request,'update_comment.html',{'comment':comment_detail,'blog':post_ID})
 
 def update_comment(request, blog_id, comment_id): #댓글 업데이트 저장
     #원래 하려했던 아래 함수로 다시 함수 설정하고 url에서 업데이트 페이지 가는거 하나, 업데이트 완료하는거 하나 url 총 두개 만들어야함
@@ -77,8 +80,9 @@ def update_comment(request, blog_id, comment_id): #댓글 업데이트 저장
     comment_post=get_object_or_404(Blog,pk=blog_id)
     comment_update.username=request.POST['username']
     comment_update.comment_text=request.POST['comment_text']
+    comment_update.post=comment_post
     comment_update.save()
-    return redirect('detail',blog_id, comment_id)
+    return redirect('detail',blog_id)
     #my_comment=Comment.objects.get(id=comment_id)
     #comment_form=CommentForm(instance=my_comment)
     #if request.method == "POST":
