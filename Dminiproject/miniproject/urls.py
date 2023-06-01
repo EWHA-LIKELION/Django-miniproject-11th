@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import miniblog.views
+import account.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +32,7 @@ urlpatterns = [
     path('main/update_page/<int:main_id>',miniblog.views.update_page,name='update_page'),
     path('main/update/<int:main_id>', miniblog.views.update,name='update2'),
     path('main/<int:main_id>/comment',miniblog.views.add_comment, name="add_comment"),
+    path('main/account/login',account.views.login_view,name="login"),
+    path('main/account/logout',account.views.logout_view,name="logout"),
+    path('main/account/signup', account.views.signup_view, name="signup"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

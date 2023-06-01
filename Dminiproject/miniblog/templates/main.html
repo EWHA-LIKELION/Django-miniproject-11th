@@ -11,6 +11,11 @@
 {% block content %} 
 <h1 style="margin:10px;padding:5px;border:1px solid; border-color:blueviolet">메인 게시판</h1>
 <a href="{% url 'new' %}">새로운 글 작성</a>
+<br>
+
+{% if user.is_authenticated %} 
+    아이디 : {{user.username}} 닉네임 : {{user.nickname}} 나이 : {{user.age}} 생일 : {{user.birth}} 좌우명 : {{user.motto}}
+{% endif %}
 
 {% for k in mains.all %} 
 <div style="margin:10px; padding:5px; border:3px solid; border-color: rgb(234, 58, 128); border-radius:10px; background-color:#e7e1e7; ">
