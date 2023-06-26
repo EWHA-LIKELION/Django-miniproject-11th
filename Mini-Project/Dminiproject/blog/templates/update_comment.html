@@ -8,12 +8,12 @@
     
     <h1 style="color:rgb(229,9,20);font-family: 'Pretendard';text-align:center;padding-top:30px; padding-bottom:15px; font-weight:700">Updating Comment</h1>
     <hr style="margin-bottom:25px">
-    <form action="{% url 'comment_detail' comment.id %}" method='POST' >
+    <form action="{% url 'update_comment' blog.id comment.id %}" method='POST' >
         <div style="color:white;font-family: 'Pretendard'; margin:10px ">
         {% csrf_token %}
         
         <p>닉네임:</p>
-        <input type="text" name="type" value="{{comment.username}}" style="width:400px; height:30px"></p>
+        <input type="text" name="username" value="{{comment.username}}" style="width:400px; height:30px"></p>
                
         <p>내용 :</p>
         <div style="margin-bottom:17px">
@@ -26,4 +26,4 @@
        
     </form>
     <br>
-{% endblock %}
+{% endblock %} 

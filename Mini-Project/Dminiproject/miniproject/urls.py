@@ -20,8 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import blog.views
-import account.views
-
+import account.views 
+ 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',blog.views.home,name='home'),
@@ -35,8 +35,11 @@ urlpatterns = [
     path('<int:blog_id>/comment', blog.views.add_comment, name="add_comment"),
     path('comment_detail/<int:comment_id>', blog.views.comment_detail,name="comment_detail"),
     path('update_comment/<int:blog_id>/<int:comment_id>', blog.views.update_comment,name="update_comment"),
+    path('delete_comment/<int:blog_id>/<int:comment_id>',blog.views.delete_comment,name="delete_comment"),
 
     path('account/login', account.views.login_view, name="login"),
     path('account/logout', account.views.logout_view, name="logout"),
     path('account/signup', account.views.signup_view, name="signup"),
+    #path('error/', account.views.login_view, name="error"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

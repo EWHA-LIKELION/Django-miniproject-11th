@@ -11,9 +11,19 @@ read.me 파일 열심히 작성해주세요!
 
 ### [댓글 수정] 구현중...
 댓글 수정을 위해 views.py 파일에 comment_detail과 update_comment 함수를 새로 만들고 comment_id를 사용해 수정하도록 함수를 정의했습니다. 그리고 urls에 'update_comment/<int:comment_id>'를 추가하고 update_comment.html 파일도 만들었습니다. 그러나 안됩니다... 뭐가 문제일까요... -> 230525 forms.py의 BlogForm에 hashtag를 추가하지 않았었다는걸 발견했습니다. 그러나 이게 연관이 있는지 왜 없는지는 모르겠습니다 -> BlogForm에 hashtag를 추가했더니 submit해도 저장이 안되는 문제가 생겼습니다. 다시 지워서 문제는 해결했지만 이유를 모르겠습니다...
+230530 성공!!!!! 이전 실패의 이유는 다음과 같습니다
+1) comment_detail에 게시물 id를 받아오지 않았었던것...
+2) views.py의 update_comment의 redirect로 'detail' 페이지로 돌아갈 때 blog_id만 받으면 되는데 comment_id까지 받아온 것...
+3) update_comment.html의 input 태그의 name을 'username'으로 views.py와 통일하지 않았음!!
+
+### [댓글 삭제]
+view.py에 delete_comment라는 함수 정의, blog_id와 comment_id르 모두 받아왔습니다.
+comment_id를 받아온 이유는 댓글 삭제 후 detial 페이지로 redirect하기 위함입니다. 댓글 수정과 삭제를 구현하며 알게된 것은 blog_id를 받아서 저장하는 변수 하나, comment_id를 받아온 변수에 .post를 붙여 models의 Comment에 있는 외래키 post에 받아온 blog_id를 저장하는 코드 한줄 일케 두개가 한 세트로 필요하다는 것 입니다. 설명을 너무 못했네 미래의 나야 views.py의 delete_comment의 #1과 #2 주석을 봐라!! urls에서 blog.id와 comment.id 둘 다 받는 걸 깜빡해서 오류가 떴었습니다. 받아와야 하는 값 꼼꼼히 체크하기!!
 
 ### [유저인증과 확장]
 세션에서 진행한 코드 참고하여 구현했습니다.
+회원가입 진행 시에 비밀번호 조건을 만족하지 않으면 가입 버튼을 눌렀을 때 오류가 뜨진 않지만 admin에서 확인했을 때 계정이 생성되지 않습니다.
+230530 로그인 시에 정보가 틀리면 home으로 redirect 되게 함 -> error.html을 만들었는데 연결이 안됩니다.. urls과 연결 시도했는데 안되는걸 보니 account의 views.py에 error 창으로 가는 새로운 함수를 만들어야 될 것 같은데 이걸 건드리기 시작하면 일이 커질 것 같아서... 일단은 home으로 가도록 해두었습니다!! if form.is_vaild 뒤에 else 추가해서 redirect 했습니다!!!
  
 ### [html/css 기록]
 지난 세션에서 진행한 것과 조금 다르게 html에서 a 태그가 아닌 button을 사용했는데, 이이에 링크를 추가하는 과정에서 그 뒤에 페이지 인덱스를 붙이는 방법을 찾지 못해 오류를 해결하지 못한 상태입니다. html 오류가 뜨지만 실행은 정상적으로 되고있습니다.
@@ -28,11 +38,11 @@ read.me 파일 열심히 작성해주세요!
 <br/>
 
 ## 2. Key Changes 
-
 230516 - 1:N과 M:N 기능을 추가했습니다.
 230525 - static & media 기능을 추가했습니다.
 230525 - 유저 로그인, 로그아웃, 회원가입 기능을 추가했습니다.
 230527 - blog의 views.py에서 수정 시에 메인 홈으로 리디렉트 되던 것을 디테일 페이지로 리디렉트되도록 수정했습니다.
+230530 - 댓글 삭제 기능 추가했습니다.
 
 <br/>
 
