@@ -12,6 +12,10 @@
 <h1 style="margin-left: 10px;">📚ReaDiary💛</h1>
 <a href="{% url 'new' %}">+add book!</a>
 
+{% if user.is_authenticated %} 
+    ID: {{user.username}} / 대학 : {{user.university}} / 전공 : {{user.major}} / 💌 : {{user.user_email}} 
+{% endif %} 
+
 {% for blog in blogs.all %}
 
 <div style="margin:10px; padding:5px; border:1px solid; border-color: coral;
