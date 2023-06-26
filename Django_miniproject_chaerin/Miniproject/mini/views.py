@@ -4,6 +4,7 @@ from .forms import *
 from django.utils import timezone
 from django.db.models import Q
 
+
 # Create your views here.
 
 def home(request):
@@ -124,3 +125,4 @@ def search(request):
      Q(title__icontains = search) | Q(body__icontains = search)
     )
     return render(request, 'search.html',{'postf':postf}) 
+
