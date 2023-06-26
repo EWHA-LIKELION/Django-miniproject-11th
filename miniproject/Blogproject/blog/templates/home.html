@@ -12,6 +12,10 @@
 <h1>✈️함께 여행을 떠나요 - 동행자 찾기✈️</h1>
 <a href="{% url 'new' %}">새로운 글 만들기</a>
     
+{% if user.is_authenticated %}
+    아이디: {{user.username}} 닉네임: {{user.nickname}} 대학: {{user.university}} 위치: {{user.location}} 나이: {{user.age}} 성별: {{user.gender}} 여행도시: {{user.travelcities}}
+{% endif %}
+
 {% for blog in blogs.all %}
     
     <div style="margin:10px; padding:5px; border:1px solid; border-color: gray; border-radius: 10px; background-color: #c2dbff; ">
