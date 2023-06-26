@@ -11,6 +11,11 @@
 {% block content %}
 
 <h1>따봉도치야 고마워 🦔</h1>
+
+{% if user.is_authenticated %}
+    아이디: {{user.username}} | 닉네임: {{user.nickname}} | 대학: {{user.university}} | 위치: {{user.location}} | 선호장르: {{user.genre}}
+{% endif %}
+<br>
 <a href="{% url 'new' %}">따봉을 날려주세요</a>
 
 {% for ddabong in ddabongs.all %}

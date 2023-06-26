@@ -65,3 +65,4 @@ def add_comment(request, ddabong_id):
 
     return render(request, 'add_comment.html', {'form' : form}
     )
+

@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import ddabong.views
+import account.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +32,7 @@ urlpatterns = [
     path('update_page/<int:ddabong_id>', ddabong.views.update_page, name="update_page"),
     path('update/<int:ddabong_id>', ddabong.views.update, name="update2"),
     path('<int:ddabong_id>/comment', ddabong.views.add_comment, name="add_comment"),
+    path('account/login', account.views.login_view, name="login"),
+    path('account/logout', account.views.logout_view, name="logout"),
+    path('account/signup', account.views.signup_view, name="signup"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
